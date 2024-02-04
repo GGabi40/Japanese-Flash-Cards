@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Japanese Cards</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/css/imgs/icon.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Flash Cards en Japonés</h1>
+        <h2 style="padding-left: 10px; padding-top: 5px">日本のカード</h2>
+      </header>
+
+      <section id="buttons">
+        <!-- <div class="toggle open">
+                <button id="hit">🔣</button>
+                <aside class="menu-bar open">
+                    <div class="verbs-keeped">
+                        <h3>Verbos</h3>
+                        <p>Ikimasu = Indo</p>
+                    </div>
+                    <div class="adverb-keeped">
+                        <h3>Adjetivos</h3>
+                    </div>
+                    <div class="noon-keeped">
+                        <h3>Substantivos</h3>
+                    </div>
+                </aside>
+            </div> -->
+        <button id="addWords" onclick="openModal()" title="Add a new Word">
+          +
+        </button>
+      </section>
+
+      <dialog class="modal">
+        <h2 class="modal__title">Agregá una nueva palabra!</h2>
+        <div class="modal__addWord">
+          <form class="form">
+            <label for="typeOfWord"
+              >¿Qué <strong>tipo de palabra</strong> es?</label
+            >
+            <select name="typeOfWord" id="typeOfWord">
+              <option value="verbo">Verbo</option>
+              <option value="adjetivo">Adjetivo</option>
+              <option value="substantivo">Substantivo</option>
+              <option value="comida">Comida</option>
+              <option value="cidades">Cidades</option>
+              <option value="kanji">Kanji</option>
+              <option value="frases">Frases</option>
+            </select>
+
+            <label for="newWord"
+              >¿Qué palabra te gustaría <strong>agregar</strong>?</label
+            >
+            <input
+              type="text"
+              name="newWord"
+              id="newWord"
+              placeholder="Ex.: それは..."
+              autocomplete="off"
+              required
+            />
+
+            <label for="addAnswer"
+              >¿Qué <strong>significa</strong> esta nueva palabra?</label
+            >
+            <input
+              type="text"
+              name="addAnswer"
+              id="addAnswer"
+              placeholder="Escriba la respuesta..."
+              autocomplete="off"
+              required
+            />
+
+            <button type="submit" id="formBtn">Ok!</button>
+        </form>
+        <div class="agregado"></div>
+        </div>
+        <button class="cerrar__modal" onclick="closeModal()">Cerrar</button>
+      </dialog>
+
+      <section id="game">
+        <div class="chooseLanguage">
+          <h2>Flash Cards para recordar palabras en Japonés:</h2>
+        </div>
+
+        <div class="game--card">
+          <div class="card">
+            <div class="tip">Verbo</div>
+            <div class="word">バス</div>
+            <div class="attempts">
+              <span id="attemptsNumber">2</span> Tentativas restantes
+            </div>
+          </div>
+          <div class="someButtons"
+            style="
+              text-align: center;
+              display: flex;
+              gap: 10px;
+              align-items: center;
+              margin-top: 10px;
+            "
+          >
+            <button
+              id="showPhoto"
+              onclick="showPhoto()"
+              title="Show me a Picture."
+              style="font-size: 2rem"
+            >
+              🖼️
+            </button>
+            <button
+              id="listener"
+              onclick="listenWord()"
+              title="Let me listen to the word."
+              style="font-size: 2rem"
+            >
+              🎧
+            </button>
+          </div>
+          <div class="answer--container">
+            <input
+              type="text"
+              name="answer"
+              class="answer--input"
+              placeholder="Respuesta Aquí..."
+              autocomplete="off"
+              required
+            />
+            <button id="sendAnswer">Enviar</button>
+          </div>
+          <span id="correctAnswer"></span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Lista de Kanjis:
+        <a href="./kanji.html" target="_blank" rel="noopener noreferrer">Click here!</a>
+      </p>
+    </footer>
+    <script src="./assets/modal.js"></script>
+    <script type="module" src="./assets/game.js"></script>
+  </body>
+</html>

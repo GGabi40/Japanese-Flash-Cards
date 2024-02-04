@@ -1,0 +1,354 @@
+:root {
+    --background-title: rgba(0, 0, 0, 0.308);
+    --font-title: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    --font-body: 'Lucida Sans', Arial, sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: #040016;
+    font-family: var(--font-body);
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    background-color: var(--background-title);
+    padding: 20px;
+}
+
+h1, h2, h3, p {
+    color: white;
+}
+
+h1 {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    letter-spacing: 1.6px;
+}
+
+#buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+#buttons button, .someButtons button {
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    font-size: 3.5rem;
+    text-align: center;
+    color: white;
+}
+
+#buttons button:hover, .someButtons button:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+#addWords:hover {
+    text-decoration: underline;
+}
+
+section#game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.chooseLanguage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-title);
+    width: 100%;
+    padding: 10px;
+}
+
+.chooseLanguage label {
+    color: white;
+    font-size: 1.6rem;
+    display: block;
+}
+
+.game--card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 15px;
+    min-height: 210px;
+    min-width: 400px;
+    padding: 6px;
+    font-family: var(--font-title);
+    position: relative;
+
+    transform: rotateY(0deg);
+
+    transition: transform 0.5s ease-in-out;
+}
+
+.card .tip {
+    font-weight: 800;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 1.7rem;
+}
+
+.card .word {
+    font-weight: 800;
+    letter-spacing: 5px;
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.attempts {
+    position: absolute;
+    bottom: 15px;
+    margin-left: 10px;
+    font-size: 1.4rem;
+    font-family: var(--font-body);
+}
+
+.attempts #attemptsNumber {
+    font-weight: 800;
+}
+
+.answer--container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.answer--input, form > input[type="text"] {
+    border: 0;
+    background-color: transparent;
+    color: white;
+    font-size: 1.6rem;
+    border-bottom: 1px solid white;
+    padding: 2px;
+    font-family: monospace;
+
+    transition: all 0.5s ease-in-out;
+}
+
+.answer--input:focus {
+    padding: 2px;
+    border-bottom: 1px solid greenyellow;
+    box-shadow: 0 0 6px greenyellow;
+}
+
+#sendAnswer {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid black;
+
+    transition: background 0.1s ease-in-out;
+}
+
+#sendAnswer:hover {
+    cursor: pointer;
+    background-color: rgb(182, 182, 182);
+}
+
+.correct {
+    border: 0;
+    background-color: greenyellow;
+    box-shadow: 0 0 8px greenyellow;
+    color: black;
+    font-weight: 500;
+}
+
+.wrong {
+    border: 0;
+    background-color: red;
+    box-shadow: 0 0 8px red;
+    font-weight: 500;
+}
+
+#correctAnswer {
+    display: none;
+    color: greenyellow;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+/* MODAL ADD WORD */
+.modal {
+    z-index: 2;
+    margin: auto;
+    max-width: 400px;
+    max-height: 90%;
+    width: 90%;
+
+    background: linear-gradient(215deg,
+    #011061,
+    #010a3b);
+    border-radius: 10px;
+    padding: 3em 2.5em;
+    gap: 1em;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.modal__title {
+    font-size: 2.5rem;
+}
+
+.modal__addWord {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-size: 1.6rem;
+}
+
+.modal button {
+    color: black;
+    background-color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 1.6rem;
+
+    text-decoration: none;
+}
+
+.modal button:hover {
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid white;
+    box-shadow: 1px 1px 3px white;
+    color: white;
+}
+
+
+.form label {
+    color: white;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.form select {
+    background-color: transparent;
+    color: white;
+    font-size: 1.6rem;
+    border-bottom: 1px solid white;
+    padding: 2px;
+    font-family: monospace;
+    border-radius: 4px;
+}
+
+.form select option {
+    background-color: #00051f;
+}
+
+.form button[type="submit"] {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    width: 60px;
+}
+
+.form input[type="file"] {
+    color: white;
+}
+
+.form strong {
+    text-decoration: underline;
+}
+
+.agregado {
+    color: black;
+    padding: 4px;
+    border-radius: 8px;
+    margin: 10px auto;
+    display: none;
+}
+
+.agregado.success {
+    background-color: greenyellow;
+}
+
+.agregado.failed {
+    background-color: red;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    padding: 5px;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+}
+
+
+/* KANJI.HTML */
+
+.kanjis {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: white;
+}
+
+#hiragana {
+    font-size: 1.6rem;
+}
+
+#hiragana::before {
+    content: '(';
+}
+
+#hiragana::after {
+    content: ')';
+}
+
+#kanji {
+    font-weight: bold;
+}
+
+#fonetic {
+    text-align: center;
+}
+
+.information--kanjis {
+    border: 1px solid white;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.kanji {
+    text-align: center;
+    font-size: 2rem;
+}
