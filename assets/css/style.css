@@ -305,8 +305,32 @@ footer {
     padding: 5px;
     font-size: 1.2rem;
     box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    margin-left: 8px;
+    background-color: white;
+
+    transition: all 0.3s ease-in-out;
 }
 
+footer:hover {
+    box-shadow: inset -2px -3px gray;
+}
+
+footer p {
+    color: black;
+    text-decoration: underline;
+}
+
+#showKanjiList, #hideKanjiList {
+    border: 0;
+    background-color: transparent;
+    display: inline;
+}
+
+#showKanjiList:hover, #hideKanjiList:hover {
+    cursor: pointer;
+}
 
 /* KANJI.HTML */
 
@@ -319,6 +343,10 @@ footer {
     align-items: center;
     gap: 20px;
     color: white;
+}
+
+.showOrHide {
+    display: none;
 }
 
 #hiragana {
@@ -339,6 +367,11 @@ footer {
 
 #fonetic {
     text-align: center;
+}
+
+#meaning {
+    margin-top: 8px;
+    font-size: 1.4em;
 }
 
 .information--kanjis {

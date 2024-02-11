@@ -15,8 +15,11 @@
     <main class="container">
         <header>
             <h1>Lista de Kanjis</h1>
-            <h2 style="padding-left: 10px; padding-top: 5px">日本のカード</h2>
+            <h2 style="padding-left: 10px; padding-top: 5px">漢字</h2>
           </header>
+
+          <button id="hideFonetic"><span id="textFonetic">Ocultar</span> Fonética</button>
+          <button id="hideHiragana"><span id="textHiragana">Ocultar</span> Hiragana</button>
 
           <section class="kanjis">
             <div class="information--kanjis">
@@ -43,8 +46,13 @@
           </section>
 
           <footer>
-            <p>Flash Cards: <a href="./index.html" target="_blank" rel="noopener noreferrer">Click here!</a></p>
+            <p class="kanjiList--footer">⬅️Flash Cards: <a href="./index.html" rel="noopener noreferrer">Click here!</a></p>
+            <button onclick="hideKanjiList()" id="hideKanjiList">❌</button>
+            <button onclick="showKanjiList()" id="showKanjiList">⬆️</button>
           </footer>
     </main>
+
+    <script src="./assets/kanjiList.js"></script>
+    <script src="./assets/modal.js"></script>
 </body>
 </html>
