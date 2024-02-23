@@ -52,7 +52,7 @@ const addNewWord = (e) => {
     let newAnswer = document.querySelector('#addAnswer').value;
 
     let clasify = words[typeOfWord];
-    const wordAlreadyExists = clasify.some(wordObj => wordObj.word === newWord);
+    const wordAlreadyExists = clasify.some(wordInObject => wordInObject.word === newWord);
 
     showConfirmation(wordAlreadyExists);
     if(wordAlreadyExists) return;
@@ -73,7 +73,7 @@ const addNewWord = (e) => {
 let interval;
 const showConfirmation = (wordAlreadyExists) => {
     if(!wordAlreadyExists) {
-        divConfirmando.textContent = 'Listo!';
+        divConfirmando.textContent = 'Todo Listo!';
         divConfirmando.classList.add('success');
         divConfirmando.style.display = "block";
     } else {
@@ -92,11 +92,14 @@ const hideConfirmation = () => {
     interval = null;
 }
 
+// Inicialize Game
 const inicializarWords = () => {
     // Obtener las palabras desde el localStorage al inicio
     const storedWords = getWordsFromLocalStorage();
     if (Object.keys(storedWords).length > 0) {
         words = storedWords;
+    } else {
+        alert('Agregá nuevas palabras a tus CARDs en el signo "+"');
     }
 };
 
@@ -122,6 +125,9 @@ const selectWordsRandomly = () => {
     if (!words[propertySelected][propertyRandom].word) return;
 
     gameChargeWords(propertySelected, selectedWord);
+
+    /* CONTAJE DE PUNTOS */
+    calculateTotalOfPoints(words);
 }
 
 /* Charge the words of the game */
@@ -131,9 +137,29 @@ const gameChargeWords = (propertySelected, selectedWord) => {
 }
 
 /* Variables imp for the Game */
+let usedWords = 0;
+let goodAnswer = 0;
 let tries = 2;
-let quantifyPlay = 0;
 
+let currentWord = [];
+
+// ▶️ TODO:
+//      Calculate Total of Points
+const calculateTotalOfPoints = (words) => {
+    let acc = [];
+    for (let prop in words) {
+        acc.push(words[prop].length);
+        let totalOfPoints = 0;
+
+        acc.forEach(tt => {
+            totalOfPoints += tt;
+        });
+
+        return totalOfPoints;
+    }
+
+    console.log(totalOfPoints);
+}
 
 /* Send Answer */
 const sendAnswer = () => {
