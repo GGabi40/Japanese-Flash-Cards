@@ -111,6 +111,8 @@ const tip = document.querySelector('.tip');
 const attempts = document.querySelector('#attemptsNumber');
 const wordForGame = document.querySelector('.word');
 
+let answer;
+
 const selectWordsRandomly = () => {
     inicializarWords();
 
@@ -126,8 +128,16 @@ const selectWordsRandomly = () => {
 
     gameChargeWords(propertySelected, selectedWord);
 
-    /* CONTAJE DE PUNTOS */
-    calculateTotalOfPoints(words);
+
+    /* Do game HERE */
+    answer = selectedWord;
+    console.log(answer);
+    // Do a function to watch de answer:
+        // selectedWord -> necesito entrar a ".answer"
+        // if answer ===  words[propertySelected][propertyRandom].answer {
+        //    puntuación++;
+        //    cambia palabra;
+        // } else { disminui intentos. if intentos === 0 { cambia palabra }}
 }
 
 /* Charge the words of the game */
@@ -137,11 +147,9 @@ const gameChargeWords = (propertySelected, selectedWord) => {
 }
 
 /* Variables imp for the Game */
-let usedWords = 0;
+// let usedWords = 0;
 let goodAnswer = 0;
 let tries = 2;
-
-let currentWord = [];
 
 // ▶️ TODO:
 //      Calculate Total of Points
