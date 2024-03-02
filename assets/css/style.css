@@ -305,7 +305,7 @@ section#game {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     padding: 5px;
     font-size: 1.2rem;
@@ -346,6 +346,8 @@ footer p {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    align-content: center;
+    grid-auto-flow: dense;
     gap: 20px;
     color: white;
 }
@@ -381,12 +383,25 @@ footer p {
 
 .information--kanjis {
     border: 1px solid white;
-    padding: 5px;
+    padding: 7px;
     display: flex;
     flex-direction: column;
+    min-height: 120px;
+    justify-content: center;
+    align-content: center;
 }
 
 .kanji {
     text-align: center;
     font-size: 2rem;
+}
+
+.separator {
+    margin-top: 25px;
+    font-size: 2.3rem;
+    text-align: center;
+}
+
+hr {
+    margin-top: 25px;
 }
