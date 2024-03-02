@@ -4,33 +4,33 @@ const divConfirmando = document.querySelector('.agregado');
 
 let words = {
     verbo: [
-        { word: "たべる", answer: "comer", img: "", alt: "", },
-        { word: "たべました", answer: "comí", img: "", alt: "", },
-        { word: "いく", answer: "ir", img: "", alt: "", },
+        { word: "たべる", answer: "comer"},
+        { word: "たべました", answer: "comí"},
+        { word: "いく", answer: "ir"},
     ],
     adjetivo: [
-        { word: "おいしい", answer: "rico", img: "", alt: "" },
+        { word: "おいしい", answer: "rico"},
     ],
     sustantivo: [
-        { word: "バス", answer: "colectivo", img: "./assets/css/imgs/substantivo/colectivo.jpg", alt: "Picture of a bus.", },
-        { word: "くるま", answer: "auto", img: "./assets/css/imgs/substantivo/auto.jpg", alt: "Picture of a car.", },
-        { word: "タクシー", answer: "taxi", img: "./assets/css/imgs/substantivo/taxi.jpg", alt: "Picture of a taxi.", },
-        { word: "でんしゃ", answer: "tren", img: "./assets/css/imgs/substantivo/tren.jpg", alt: "Picture of a train.", },
-        { word: "ひこうき", answer: "avión", img: "./assets/css/imgs/substantivo/avion.jpg", alt: "Picture of an airplane.", },
-        { word: "ふね", answer: "barco", img: "./assets/css/imgs/substantivo/barco.jpg", alt: "Picture of a boat.", },
+        { word: "バス", answer: "colectivo"},
+        { word: "くるま", answer: "auto"},
+        { word: "タクシー", answer: "taxi"},
+        { word: "でんしゃ", answer: "tren"},
+        { word: "ひこうき", answer: "avión"},
+        { word: "ふね", answer: "barco"},
     ],
     comida: [],
     cidades: [],
     kanji: [
-        { word: "一", answer: "ichi", img: "./assets/css/imgs/kanji/one.png", alt: "Picture of a number One.", },
-        { word: "二", answer: "ni", img: "./assets/css/imgs/kanji/twp.png", alt: "Picture of a number Two.", },
-        { word: "三", answer: "san", img: "./assets/css/imgs/kanji/three.png", alt: "Picture of a number Three.", },
-        { word: "山", answer: "yama", img: "./assets/css/imgs/kanji/mountain.png", alt: "Picture of a montain.", },
-        { word: "私", answer: "watashi", img: "./assets/css/imgs/kanji/yo.png", alt: "Picture of a man pointing at himself.", },
-        { word: "名前", answer: "namae", img: "./assets/css/imgs/kanji/name.png", alt: "Picture of a card asking for your name.", },
+        { word: "一", answer: "ichi"},
+        { word: "二", answer: "ni"},
+        { word: "三", answer: "san"},
+        { word: "山", answer: "yama"},
+        { word: "私", answer: "watashi"},
+        { word: "名前", answer: "namae"},
     ],
     frases: [
-        { word: "それは なんですか。", answer: "qué es eso", img: "", alt: "", },
+        { word: "それは なんですか。", answer: "qué es eso"},
         
     ]
 }
@@ -112,6 +112,8 @@ const attempts = document.querySelector('#attemptsNumber');
 const wordForGame = document.querySelector('.word');
 
 let answer;
+let selectedWord;
+let answerOfWord;
 
 const selectWordsRandomly = () => {
     inicializarWords();
@@ -122,22 +124,12 @@ const selectWordsRandomly = () => {
     const propertySelected = propertiesOfObject[indexRandom];
     const propertyRandom = Math.floor(Math.random() * words[propertySelected].length);
 
-    const selectedWord = words[propertySelected][propertyRandom].word;
+    selectedWord = words[propertySelected][propertyRandom].word;
+    answerOfWord = words[propertySelected][propertyRandom].answer;
 
-    if (!words[propertySelected][propertyRandom].word) return;
+    if (!selectedWord) return;
 
     gameChargeWords(propertySelected, selectedWord);
-
-
-    /* Do game HERE */
-    answer = selectedWord;
-    console.log(answer);
-    // Do a function to watch de answer:
-        // selectedWord -> necesito entrar a ".answer"
-        // if answer ===  words[propertySelected][propertyRandom].answer {
-        //    puntuación++;
-        //    cambia palabra;
-        // } else { disminui intentos. if intentos === 0 { cambia palabra }}
 }
 
 /* Charge the words of the game */
@@ -177,10 +169,18 @@ const sendAnswer = () => {
     alert(answer);
 
     answerInput.value = '';
+    
+    // Do a function to watch de answer:
+        // selectedWord -> necesito entrar a ".answer"
+        // if answer ===  words[propertySelected][propertyRandom].answer {
+        //    puntuación++;
+        //    cambia palabra;
+        // } else { disminui intentos. if intentos === 0 { cambia palabra }}
 }
 
 
 selectWordsRandomly();
+console.log(selectedWord, answerOfWord);
 
 form.addEventListener('submit', addNewWord);
 sendButton.addEventListener('click', sendAnswer);

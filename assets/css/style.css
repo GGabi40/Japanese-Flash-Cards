@@ -159,6 +159,8 @@ section#game {
     padding: 2px;
     border-bottom: 1px solid greenyellow;
     box-shadow: 0 0 6px greenyellow;
+
+    outline: none;
 }
 
 #sendAnswer {
@@ -169,12 +171,14 @@ section#game {
     border: 1px solid black;
     font-size: 1.3rem;
 
-    transition: background 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 #sendAnswer:hover {
     cursor: pointer;
-    background-color: gray;
+    font-size: 1.2rem;
+    background-color: gainsboro;
+    box-shadow: inset -3px -3px 2px gray;
 }
 
 .correct {
