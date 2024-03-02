@@ -116,6 +116,9 @@ let selectedWord;
 let answerOfWord;
 let usedWords = [];
 
+// TODO:
+//    . Que no se repitan palabras
+// CRUD de palabras: Mostrar palabras agregadas, editar y deletar
 const selectWordsRandomly = () => {
     inicializarWords();
 
