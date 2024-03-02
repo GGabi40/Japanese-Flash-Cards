@@ -150,6 +150,7 @@ const selectWordsRandomly = () => {
 
     if (!selectedWord) return;
 
+    tries = 2;
     gameChargeWords(propertySelected, selectedWord);
 }
 
