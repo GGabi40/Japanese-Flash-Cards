@@ -12,7 +12,7 @@ let words = {
         { word: "おいしい", answer: "rico"},
     ],
     sustantivo: [
-        { word: "バス", answer: "colectivo"},
+        // { word: "バス", answer: "colectivo"},
         { word: "くるま", answer: "auto"},
         { word: "タクシー", answer: "taxi"},
         { word: "でんしゃ", answer: "tren"},
@@ -109,19 +109,40 @@ const sendButton = document.querySelector('#sendAnswer');
 
 const tip = document.querySelector('.tip');
 const attempts = document.querySelector('#attemptsNumber');
+const puntaje = document.querySelector('#puntaje');
 const wordForGame = document.querySelector('.word');
 
-let answer;
 let selectedWord;
 let answerOfWord;
+let usedWords = [];
 
 const selectWordsRandomly = () => {
     inicializarWords();
+
+    let allWords = [];
+    for (let prop in words) {
+        allWords = allWords.concat(words[prop].map(item => item.word));
+    }
+
+    const availableWords = allWords.filter(word => !usedWords.includes(word));
+
+    if (availableWords.length === 0) {
+        // Si no hay palabras disponibles, mostrar el mensaje de juego finalizado
+        alert(`¡Juego finalizado! Total de palabras: ${puntajeTotal}`);
+        return;
+    }
 
     let propertiesOfObject = Object.keys(words);
     const indexRandom = Math.floor(Math.random() * propertiesOfObject.length);
 
     const propertySelected = propertiesOfObject[indexRandom];
+
+    if (!words[propertySelected] || words[propertySelected].length === 0) {
+        // Si la categoría está vacía, vuelve a intentar seleccionar una palabra
+        selectWordsRandomly();
+        return;
+    }
+
     const propertyRandom = Math.floor(Math.random() * words[propertySelected].length);
 
     selectedWord = words[propertySelected][propertyRandom].word;
@@ -139,48 +160,34 @@ const gameChargeWords = (propertySelected, selectedWord) => {
 }
 
 /* Variables imp for the Game */
-// let usedWords = 0;
-let goodAnswer = 0;
+let puntajeTotal = 0;
 let tries = 2;
-
-// ▶️ TODO:
-//      Calculate Total of Points
-const calculateTotalOfPoints = (words) => {
-    let acc = [];
-    for (let prop in words) {
-        acc.push(words[prop].length);
-        let totalOfPoints = 0;
-
-        acc.forEach(tt => {
-            totalOfPoints += tt;
-        });
-
-        return totalOfPoints;
-    }
-
-    console.log(totalOfPoints);
-}
 
 /* Send Answer */
 const sendAnswer = () => {
-    const answer = answerInput.value;
+    const answer = answerInput.value.trim();
     if(!answer) return;
 
-    alert(answer);
-
     answerInput.value = '';
-    
-    // Do a function to watch de answer:
-        // selectedWord -> necesito entrar a ".answer"
-        // if answer ===  words[propertySelected][propertyRandom].answer {
-        //    puntuación++;
-        //    cambia palabra;
-        // } else { disminui intentos. if intentos === 0 { cambia palabra }}
+
+    if(answer === answerOfWord) {
+        puntajeTotal++;
+        selectWordsRandomly();
+    } else {
+        tries--;
+        if(tries === 0) {
+            selectWordsRandomly();
+            tries = 2;
+            puntajeTotal = 0; 
+        }
+    }
+
+    attempts.textContent = tries;
+    puntaje.textContent = puntajeTotal;
+
 }
 
-
 selectWordsRandomly();
-console.log(selectedWord, answerOfWord);
 
 form.addEventListener('submit', addNewWord);
 sendButton.addEventListener('click', sendAnswer);
@@ -188,7 +195,5 @@ answerInput.addEventListener('keyup', (e) => {
     if(e.key === 'Enter') {
         sendAnswer();
         answerInput.value = '';
-    } else {
-        return;
     }
 });

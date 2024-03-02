@@ -205,6 +205,17 @@ section#game {
     margin-top: 15px;
 }
 
+#puntos {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+#puntaje {
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 6px violet;
+}
+
 
 /* MODAL ADD WORD */
 .modal {
@@ -408,4 +419,33 @@ footer p {
 
 hr {
     margin-top: 25px;
+}
+
+@media (max-width: 380px) {
+    .card {
+        min-width: 300px;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    #addWords {
+        font-size: 0.5rem;
+    }
+
+    .answer--container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 280px) {
+    .card {
+        min-width: 230px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
 }
